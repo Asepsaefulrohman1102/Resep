@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ubah Data Laundry"
+        android:text="Ubah Data Resep"
         android:textSize="22sp"
         android:textStyle="bold"
         android:layout_gravity="center"
@@ -27,7 +27,7 @@
             android:id="@+id/et_nama"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nama Laundry"
+            android:hint="Nama Resep"
             android:textSize="20sp"
             android:inputType="text"
             />
@@ -44,7 +44,7 @@
             android:id="@+id/et_alamat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Alamat Laundry"
+            android:hint="Isi Resep"
             android:maxLines="2"
             android:textSize="20sp"
             android:inputType="text"
@@ -58,12 +58,13 @@
         >
 
         <EditText
-            android:id="@+id/et_telepon"
+            android:id="@+id/et_nm_pembuat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Telepon Laundry"
+            android:hint="Nama Pembuat Resep"
+            android:maxLines="2"
             android:textSize="20sp"
-            android:inputType="phone"
+            android:inputType="text"
             />
 
     </com.google.android.material.textfield.TextInputLayout>

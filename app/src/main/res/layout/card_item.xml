@@ -25,27 +25,35 @@
             android:id="@+id/tv_nama"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nama Laundry"
+            android:text="Nama Resep"
             android:textSize="22sp"
             android:textStyle="bold"
             />
 
         <TextView
-            android:id="@+id/tv_alamat"
+            android:id="@+id/tv_nama_P"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Alamat Laundry"
+            android:text="Nama Pembuat"
             android:textSize="18sp"
             android:maxLines="2"
             />
 
         <TextView
-            android:id="@+id/tv_telepon"
+            android:id="@+id/tv_resep"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Telepon Laundry"
+            android:text="Nama Bahan"
             android:textSize="18sp"
             />
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_telepon"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Telepon Laundry"-->
+<!--            android:textSize="18sp"-->
+<!--            />-->
 
     </LinearLayout>
 

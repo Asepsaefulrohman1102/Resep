@@ -1,6 +1,7 @@
 package com.example.resep.API;
 
-import com.ahmfarisi.laundrypalembang.Model.ResponseModel;
+import com.example.resep.Model.ResponseModel;
+import com.example.resep.Model.ResponseModel;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -16,8 +17,8 @@ public interface APIRequestData {
     @POST("create.php")
     Call<ResponseModel> ardCreateData(
             @Field("nama") String nama,
-            @Field("alamat") String alamat,
-            @Field("telepon") String telepon
+            @Field("nama_pembuat") String nama_pembuat,
+            @Field("isi") String isi
     );
 
     @FormUrlEncoded
@@ -37,7 +38,7 @@ public interface APIRequestData {
     Call<ResponseModel> ardUpdateData(
             @Field("id") int id,
             @Field("nama") String nama,
-            @Field("alamat") String alamat,
-            @Field("telepon") String telepon
+            @Field("nama_pembuat") String nama_pembuat,
+            @Field("isi") String isi
     );
 }

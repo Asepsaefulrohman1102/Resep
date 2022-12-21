@@ -2,7 +2,7 @@ package com.example.resep.Model;
 
 public class DataModel {
     private int id;
-    private String nama, alamat, telepon;
+    private String nama, nama_pembuat , isi;
 
     public int getId() {
         return id;
@@ -20,19 +20,19 @@ public class DataModel {
         this.nama = nama;
     }
 
-    public String getAlamat() {
-        return alamat;
+    public String getNama_pembuat() {
+        return nama_pembuat;
     }
 
-    public void setAlamat(String alamat) {
-        this.alamat = alamat;
+    public void setNama_pembuat(String nama_pembuat) {
+        this.nama_pembuat = nama_pembuat;
     }
 
-    public String getTelepon() {
-        return telepon;
+    public String getIsi() {
+        return isi;
     }
 
-    public void setTelepon(String telepon) {
-        this.telepon = telepon;
+    public void setIsi(String isi) {
+        this.isi = isi;
     }
 }

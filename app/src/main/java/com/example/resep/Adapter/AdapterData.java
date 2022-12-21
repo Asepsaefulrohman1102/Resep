@@ -14,13 +14,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.ahmfarisi.laundrypalembang.API.APIRequestData;
-import com.ahmfarisi.laundrypalembang.API.RetroServer;
-import com.ahmfarisi.laundrypalembang.Activity.MainActivity;
-import com.ahmfarisi.laundrypalembang.Activity.UbahActivity;
-import com.ahmfarisi.laundrypalembang.Model.DataModel;
-import com.ahmfarisi.laundrypalembang.Model.ResponseModel;
-import com.ahmfarisi.laundrypalembang.R;
+import com.example.resep.API.APIRequestData;
+import com.example.resep.API.RetroServer;
+import com.example.resep.Activity.MainActivity;
+import com.example.resep.Activity.UbahActivity;
+import com.example.resep.Model.DataModel;
+import com.example.resep.Model.ResponseModel;
+import com.example.resep.R;
 
 import java.util.List;
 
@@ -31,8 +31,8 @@ import retrofit2.Response;
 public class AdapterData extends RecyclerView.Adapter<AdapterData.HolderData>{
     private Context ctx;
     private List<DataModel> listData;
-    private List<DataModel> listLaundry;
-    private int idLaundry;
+    private List<DataModel> listResep;
+    private int idResep;
 
     public AdapterData(Context ctx, List<DataModel> listData) {
         this.ctx = ctx;
@@ -53,8 +53,8 @@ public class AdapterData extends RecyclerView.Adapter<AdapterData.HolderData>{
 
         holder.tvId.setText(String.valueOf(dm.getId()));
         holder.tvNama.setText(dm.getNama());
-        holder.tvAlamat.setText(dm.getAlamat());
-        holder.tvTelepon.setText(dm.getTelepon());
+        holder.tvNamaP.setText(dm.getNama_pembuat());
+        holder.tvIsi.setText(dm.getIsi());
     }
 
     @Override
@@ -63,15 +63,15 @@ public class AdapterData extends RecyclerView.Adapter<AdapterData.HolderData>{
     }
 
     public class HolderData extends RecyclerView.ViewHolder {
-        TextView tvId, tvNama, tvAlamat, tvTelepon;
+        TextView tvId, tvNama, tvNamaP, tvIsi;
 
         public HolderData(@NonNull View itemView) {
             super(itemView);
 
             tvId = itemView.findViewById(R.id.tv_id);
             tvNama = itemView.findViewById(R.id.tv_nama);
-            tvAlamat = itemView.findViewById(R.id.tv_alamat);
-            tvTelepon = itemView.findViewById(R.id.tv_telepon);
+            tvNamaP = itemView.findViewById(R.id.tv_nama_P);
+            tvIsi = itemView.findViewById(R.id.tv_resep);
 
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
@@ -82,7 +82,7 @@ public class AdapterData extends RecyclerView.Adapter<AdapterData.HolderData>{
                     dialogPesan.setIcon(R.mipmap.ic_launcher_round);
                     dialogPesan.setCancelable(true);
 
-                    idLaundry = Integer.parseInt(tvId.getText().toString());
+                    idResep = Integer.parseInt(tvId.getText().toString());
 
                     dialogPesan.setPositiveButton("Hapus", new DialogInterface.OnClickListener() {
                         @Override
@@ -116,7 +116,7 @@ public class AdapterData extends RecyclerView.Adapter<AdapterData.HolderData>{
 
         private void deleteData(){
             APIRequestData ardData = RetroServer.konekRetrofit().create(APIRequestData.class);
-            Call<ResponseModel> hapusData = ardData.ardDeleteData(idLaundry);
+            Call<ResponseModel> hapusData = ardData.ardDeleteData(idResep);
 
             hapusData.enqueue(new Callback<ResponseModel>() {
                 @Override
@@ -136,27 +136,27 @@ public class AdapterData extends RecyclerView.Adapter<AdapterData.HolderData>{
 
         private void getData(){
             APIRequestData ardData = RetroServer.konekRetrofit().create(APIRequestData.class);
-            Call<ResponseModel> ambilData = ardData.ardGetData(idLaundry);
+            Call<ResponseModel> ambilData = ardData.ardGetData(idResep);
 
             ambilData.enqueue(new Callback<ResponseModel>() {
                 @Override
                 public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
                     int kode = response.body().getKode();
                     String pesan = response.body().getPesan();
-                    listLaundry = response.body().getData();
+                    listResep = response.body().getData();
 
-                    int varIdLaundry = listLaundry.get(0).getId();
-                    String varNamaLaundry = listLaundry.get(0).getNama();
-                    String varAlamatLaundry = listLaundry.get(0).getAlamat();
-                    String varTeleponLaundry = listLaundry.get(0).getTelepon();
+                    int varIdResep = listResep.get(0).getId();
+                    String varNama = listResep.get(0).getNama();
+                    String varNamaPembuat = listResep.get(0).getNama_pembuat();
+                    String varIsiResep = listResep.get(0).getIsi();
 
                     //Toast.makeText(ctx, "Kode : "+kode+" | Pesan : "+pesan+ " | Data : "+varIdLaundry+" | "+varNamaLaundry + " | "+varAlamatLaundry+" | "+varTeleponLaundry, Toast.LENGTH_SHORT).show();
 
                     Intent kirim = new Intent(ctx, UbahActivity.class);
-                    kirim.putExtra("xId", varIdLaundry);
-                    kirim.putExtra("xNama", varNamaLaundry);
-                    kirim.putExtra("xAlamat", varAlamatLaundry);
-                    kirim.putExtra("xTelepon", varTeleponLaundry);
+                    kirim.putExtra("xId", varIdResep);
+                    kirim.putExtra("xNama", varNama);
+                    kirim.putExtra("xNamaPembuat", varNamaPembuat);
+                    kirim.putExtra("xIsi", varIsiResep);
                     ctx.startActivity(kirim);
                 }
 

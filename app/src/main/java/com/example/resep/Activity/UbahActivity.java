@@ -9,10 +9,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.ahmfarisi.laundrypalembang.API.APIRequestData;
-import com.ahmfarisi.laundrypalembang.API.RetroServer;
-import com.ahmfarisi.laundrypalembang.Model.ResponseModel;
-import com.ahmfarisi.laundrypalembang.R;
+import com.example.resep.API.APIRequestData;
+import com.example.resep.API.RetroServer;
+import com.example.resep.Model.ResponseModel;
+import com.example.resep.R;
+import com.example.resep.API.APIRequestData;
 
 import retrofit2.Call;
 import retrofit2.Callback;
