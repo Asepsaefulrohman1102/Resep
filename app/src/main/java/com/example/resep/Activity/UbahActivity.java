@@ -1,5 +1,6 @@
 package com.example.resep.Activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -21,11 +22,12 @@ import retrofit2.Response;
 
 public class UbahActivity extends AppCompatActivity {
     private int xId;
-    private String xNama, xAlamat, xTelepon;
-    private EditText etNama, etAlamat, etTelepon;
+    private String xNama, xNamaP, xIsiRe;
+    private EditText etNama, etNamaP, etIsiRe;
     private Button btnUbah;
-    private String yNama, yAlamat, yTelepon;
+    private String yNama, yNamaP, yIsiRe;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,24 +36,24 @@ public class UbahActivity extends AppCompatActivity {
         Intent terima = getIntent();
         xId = terima.getIntExtra("xId", -1);
         xNama = terima.getStringExtra("xNama");
-        xAlamat = terima.getStringExtra("xAlamat");
-        xTelepon = terima.getStringExtra("xTelepon");
+        xNamaP = terima.getStringExtra("xNamaP");
+        xIsiRe = terima.getStringExtra("xIsi");
 
         etNama = findViewById(R.id.et_nama);
-        etAlamat = findViewById(R.id.et_alamat);
-        etTelepon = findViewById(R.id.et_telepon);
+        etNamaP = findViewById(R.id.et_namaP);
+        etIsiRe = findViewById(R.id.et_isi_Re);
         btnUbah = findViewById(R.id.btn_ubah);
 
         etNama.setText(xNama);
-        etAlamat.setText(xAlamat);
-        etTelepon.setText(xTelepon);
+        etNamaP.setText(xNamaP);
+        etIsiRe.setText(xIsiRe);
 
         btnUbah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 yNama = etNama.getText().toString();
-                yAlamat = etAlamat.getText().toString();
-                yTelepon = etTelepon.getText().toString();
+                yNamaP = etNamaP.getText().toString();
+                yIsiRe = etIsiRe.getText().toString();
 
                 updateData();
             }
@@ -60,7 +62,7 @@ public class UbahActivity extends AppCompatActivity {
 
     private void updateData(){
         APIRequestData ardData = RetroServer.konekRetrofit().create(APIRequestData.class);
-        Call<ResponseModel> ubahData = ardData.ardUpdateData(xId, yNama, yAlamat, yTelepon);
+        Call<ResponseModel> ubahData = ardData.ardUpdateData(xId, yNama, yNamaP, yIsiRe);
 
         ubahData.enqueue(new Callback<ResponseModel>() {
             @Override

@@ -41,10 +41,10 @@
         >
 
         <EditText
-            android:id="@+id/et_alamat"
+            android:id="@+id/et_namaP"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Isi Resep"
+            android:hint="Nama Pembuat Resep"
             android:maxLines="2"
             android:textSize="20sp"
             android:inputType="text"
@@ -58,10 +58,10 @@
         >
 
         <EditText
-            android:id="@+id/et_nm_pembuat"
+            android:id="@+id/et_isi_Re"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nama Pembuat Resep"
+            android:hint="Isi Resep"
             android:maxLines="2"
             android:textSize="20sp"
             android:inputType="text"

@@ -71,6 +71,13 @@ public class MainActivity extends AppCompatActivity {
 //                startActivity(new Intent(MainActivity.this, TambahActivity.class));
 //            }
 //        });
+        //ketika tombol + di klik akan menuju halaman activity tambah
+        fabTambah.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, TambahActivity.class));
+            }
+        });
     }
 
     @Override
